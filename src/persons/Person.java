@@ -20,7 +20,7 @@ public abstract class Person{
     }
 
     public void goToLocation(Location location) {
-        System.out.println(this.getClass().getSimpleName() + " отправляется в " + location.getTypeOfLocation());
+        System.out.println(this.name + " отправляется в " + location.getTypeOfLocation());
         this.location = location.getTypeOfLocation();
     }
 

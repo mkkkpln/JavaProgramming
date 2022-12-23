@@ -10,8 +10,8 @@ public class Policeman extends Person implements Silent, Sit, Work, Command {
 
     private boolean isGlamorousButton =false;
 
-    public Policeman(String name, int age) {
-        super(name, age);
+    public Policeman(String name, int age, TypeOfLocation location) {
+        super(name, age, location);
     }
 
     @Override
@@ -40,12 +40,12 @@ public class Policeman extends Person implements Silent, Sit, Work, Command {
 
         if (this.location==TypeOfLocation.OPENAIR) {
             isGlamorousButton =true;
-            System.out.println(" одет в мундир с блестящими пуговицами ");
+            System.out.println(this.name + " одет в мундир с блестящими пуговицами ");
         } else if (this.location==TypeOfLocation.UNVENTILATEDROOM) {
             isGlamorousButton =false;
-            System.out.println(" одет в мундир с обычными металлическими пуговицами ");
+            System.out.println(this.name + " одет в мундир с обычными металлическими пуговицами ");
         } else {
-            System.out.println(" нет одежды ");
+            System.out.println("У " + this.name + " нет одежды ");
         }
 
     }
@@ -57,7 +57,7 @@ public class Policeman extends Person implements Silent, Sit, Work, Command {
 
     @Override
     public void sit(TypeOfLocation location){
-        System.out.println(this.name + " сел " + location);
+        System.out.println(this.name + " сел в " + location);
     }
 
 

@@ -16,10 +16,10 @@ import persons.WithoutWork;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Запуск моей программы");
+        System.out.println("Запуск моей программы\n");
 
         Location pavement = new Location(TypeOfLocation.PAVEMENT);
-        Policeman figle = new Policeman("Фигль", 42 );
+        Policeman figle = new Policeman("Фигль", 42, TypeOfLocation.UNVENTILATEDROOM );
         figle.goToLocation(pavement);
         figle.silent();
         figle.command();
@@ -32,10 +32,11 @@ public class Main {
         neznaika.transfer();
         Location policestation = new Location(TypeOfLocation.POLICESTATION);
         neznaika.goToLocation(policestation);
-        Policeman migle = new Policeman("Мигль", 42 );
+        Policeman migle = new Policeman("Мигль", 42, TypeOfLocation.OPENAIR);
         migle.work(TypeOfLocation.OPENAIR);
-        figle.work(TypeOfLocation.UNVENTILATEDROOM);
         Location room = new Location(TypeOfLocation.UNVENTILATEDROOM);
+        figle.goToLocation(room);
+        figle.work(TypeOfLocation.UNVENTILATEDROOM);
         migle.goToLocation(room);
 
 
