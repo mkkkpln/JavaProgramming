@@ -5,7 +5,7 @@ import locations.TypeOfLocation;
 
 public abstract class Person{
     protected String name;
-    private int age;
+    protected int age;
     protected TypeOfLocation location;
 
     public Person(String name, int age, TypeOfLocation location) {

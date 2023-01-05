@@ -10,7 +10,7 @@ public class WithoutWork extends Person implements Transfer {
 
     @Override
     public void transfer(){
-        System.out.println(this.name + " переместился ");
+        System.out.println(this.name + " неожиданно переместился ");
     }
 
 }

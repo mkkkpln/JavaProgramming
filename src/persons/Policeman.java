@@ -31,7 +31,15 @@ public class Policeman extends Person implements Silent, Sit, Work, Command {
 
     @Override
     public void silent(){
+
         System.out.println(this.name + " молчит ");
+
+        if (this.age < 45) {
+            System.out.println(this.name + " ,оказывается, довольно молод в силу возраста ");
+        }
+        else {
+            System.out.println(this.name + " ,оказывается, очень и очень старый в силу возраста");
+        }
     }
 
     @Override

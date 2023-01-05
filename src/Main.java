@@ -1,3 +1,5 @@
+import cars.Car;
+import cars.Motor;
 import locations.Location;
 import locations.TypeOfLocation;
 import persons.Driver;
@@ -24,6 +26,9 @@ public class Main {
         figle.silent();
         figle.command();
         Location car = new Location(TypeOfLocation.CAR);
+        Motor best = new Motor("Лучший в мире мотор", 501);
+        Car bmw = new Car("BMW", best);
+        best.voice();
         figle.goToLocation(car);
         figle.sit(TypeOfLocation.CAR);
         Driver driver = new Driver("Водитель", 56,TypeOfLocation.CAR);
@@ -37,8 +42,6 @@ public class Main {
         Location room = new Location(TypeOfLocation.UNVENTILATEDROOM);
         figle.goToLocation(room);
         figle.work(TypeOfLocation.UNVENTILATEDROOM);
-        migle.goToLocation(room);
-
 
 
     }
