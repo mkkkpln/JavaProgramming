@@ -9,7 +9,7 @@ public abstract class Person{
     protected TypeOfLocation location;
 
     public Person(String name, int age, TypeOfLocation location) {
-        this.name = name;// назвали человека
+        this.name = name;
         this.age = age;
         this.location = location;
     }
@@ -26,6 +26,7 @@ public abstract class Person{
 
     @Override
     public int hashCode() {
+
         return location.hashCode() + age * 21;
     }
 
