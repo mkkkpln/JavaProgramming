@@ -1,6 +1,4 @@
-package cars;
-
-import locations.TypeOfLocation;
+package things;
 
 public class Motor {
     private final String name;
@@ -12,11 +10,11 @@ public class Motor {
     }
 
     public void voice() {
-        if (this.power > 500) {
-            System.out.println(this.name + " загудел ");
+        if (this.power > 200) {
+            System.out.println(this.name + " загудел. ");
         }
         else {
-            System.out.println(this.name + " не смог завестись ");
+            System.out.println(this.name + " не смог завестись. ");
         }
 
     }

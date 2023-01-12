@@ -1,22 +1,25 @@
 package persons;
 
-import actions.*;
-import cars.Car;
-import locations.TypeOfLocation;
+import things.Car;
+import enums.Emotion;
 
-public class Driver extends Person implements Jump {
+public class Driver extends Person {
     private boolean haveCar =false;
     private Car car;
 
-    public Driver(String name, int age, TypeOfLocation location) {
-        super(name, age, location);
+    public Driver(String name, int age) {
+
+        super(name, age);
     }
 
 
-    @Override
     public void jump(){
         System.out.println(this.name + " подпрыгивает в машине ");
     }
 
 
+    @Override
+    public void setEmotion(Emotion emotion) {
+
+    }
 }

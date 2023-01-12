@@ -2,8 +2,6 @@ package enums;
 
 public enum Adjective {
     KIND ("добрые"),
-    RIDICULOUS ("нелепые"),
-    TALL ("рослый"),
     BLUE ("синем"),
     COOPER ("медной"),
     WEIGHTY ("увесистая"),
@@ -20,14 +18,8 @@ public enum Adjective {
     HEAVY ("тяжелыми"),
     STRAIGHT ("прямыми"),
     QUADRANGULAR ("четырехугольными"),
-    PHOTOGRAPHIC ("фотографический"),
-    XRAY ("рентгеновский"),
-    KIDNAPPED ("похищенных"),
-    LONG ("длинной"),
     CHEEKBONES ("скуластые"),
-    BROADFACED ("широколицые"),
-    ANGRY ("сердитый"),
-    TRIMMED ("подстриженный");
+    BROADFACED ("широколицые");
 
     private String mean;
     Adjective(String name) {

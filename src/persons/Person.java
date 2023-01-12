@@ -1,14 +1,16 @@
 package persons;
 
-import locations.Location;
+import actions.Emotionable;
+import enums.Emotion;
 import locations.TypeOfLocation;
 
-public abstract class Person{
+public abstract class Person implements Emotionable {
     protected String name;
     protected int age;
     protected TypeOfLocation location;
+    protected Emotion emotion = Emotion.NORMAL;
 
-    public Person(String name, int age, TypeOfLocation location) {
+    public Person(String name, int age, TypeOfLocation location, Emotion emotion) {
         this.name = name;
         this.age = age;
         this.location = location;
@@ -19,14 +21,30 @@ public abstract class Person{
         this.age = age;
     }
 
-    public void goToLocation(Location location) {
-        System.out.println(this.name + " отправляется в " + location.getTypeOfLocation());
-        this.location = location.getTypeOfLocation();
+    public TypeOfLocation getTypeOfLocation() {
+
+        return location;
+    }
+
+    public String getName(){
+
+        return name;
+    }
+
+    public void goToLocation(TypeOfLocation location)  {
+        System.out.println(this.name + " отправляется в " + location + ".");
+    }
+
+    public void setEmotion(Emotion emotion){
+        this.emotion = emotion;
+        System.out.printf("у %s настроение сменилось на %s\n", getName(), emotion);
+    }
+    public Emotion getEmotion(){
+        return emotion;
     }
 
     @Override
     public int hashCode() {
-
         return location.hashCode() + age * 21;
     }
 
@@ -50,7 +68,8 @@ public abstract class Person{
                 ", Location: " + location +
                 '}';
     }
-
 }
+
+
 
 
