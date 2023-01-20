@@ -21,10 +21,6 @@ public abstract class Person implements Emotionable {
         this.age = age;
     }
 
-    public TypeOfLocation getTypeOfLocation() {
-
-        return location;
-    }
 
     public String getName(){
 

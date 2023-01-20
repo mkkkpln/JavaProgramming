@@ -5,9 +5,9 @@ import exceptions.NoPhoneOnTable;
 import exceptions.TableBrokenException;
 
 public class Room {
-    private String name;
+    private static String name;
     public Room (String name) {
-        this.name = name;
+        Room.name = name;
     }
     public String getName() {
         return name;
@@ -16,9 +16,7 @@ public class Room {
     public String toString() {
         return "комната";
     }
-    public void stand() {
-        System.out.println("стоял");
-    }
+
     public static class Table {
         private String name;
         public Table (String name) {
@@ -32,9 +30,13 @@ public class Room {
             return "стол";
         }
 
-        public void stand(int metres) {
-            System.out.println("Посреди комнаты стоял " + metres+ "-х метровый " + Adjective.STRONG.toString() + " " + Adjective.OAKEN.toString() + " " + this.name + " с " + Adjective.HEAVY.toString() + " " + Adjective.STRAIGHT.toString() + " " + Adjective.QUADRANGULAR.toString() + " ножками.");
-            double chanceToBreak = metres * 0.00555555;
+        public void stand(int kg) {
+            System.out.println("Посреди комнаты стоял 3х метровый "
+                    + Adjective.STRONG.toString()
+                    + " " + Adjective.OAKEN.toString() + " " + this.name
+                    + " с " + Adjective.HEAVY.toString() + " " + Adjective.STRAIGHT.toString()
+                    + " " + Adjective.QUADRANGULAR.toString() + " ножками. Он мог выдержать всего " + kg + " килограмм.");
+            double chanceToBreak = kg * 0.00555555;
             if (Math.random() > 1 - chanceToBreak)
             {
                 throw new TableBrokenException("Стол сломался из-за нагрузки...");
@@ -65,8 +67,8 @@ public class Room {
                     System.out.println("Всего " + cnt + " телефон на столе"); }
             }
         }
-        public class BigBox {
-            private String name;
+        public static class BigBox {
+            private final String name;
 
             public BigBox (String name) {
                 this.name = name;
@@ -82,8 +84,8 @@ public class Room {
             }
         }
 
-        public class LittleBox {
-            private String name;
+        public static class LittleBox {
+            private final String name;
 
             public LittleBox (String name) {
                 this.name = name;
@@ -99,7 +101,7 @@ public class Room {
             }
         }
 
-        public class Helmet {
+        public static class Helmet {
             private String name;
 
             public Helmet (String name) {
@@ -143,6 +145,7 @@ public class Room {
         private String name;
 
         public Wardrobe(String name) {
+
             this.name = name;
         }
 
@@ -198,5 +201,4 @@ public class Room {
             System.out.println("У дверей находилась так называемая штафирка, то есть прибор для измерения роста преступников, состоявший из длинной, установленной на подставке вертикальной рейки с делениями и подвижной планки.");
         }
     }
-
-    }
+}

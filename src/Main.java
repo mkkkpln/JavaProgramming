@@ -30,11 +30,9 @@ public class Main {
         Room.Table table = new Room.Table("стол");
         Room.PhotoMachine photoMachine = new Room.PhotoMachine("фотографический автомат");
         Room.XRAY xray = new Room.XRAY("рентгеновский аппарат");
-        Room.Shtafirka shtafirka = new Room.Shtafirka("штафирка");
-        Room.Table.Phone phone = table.new Phone("телефонный аппарат");
-        Room.Table.BigBox bigBox = table.new BigBox("ящик");
-        Room.Table.LittleBox littleBox = table.new LittleBox("коробка");
-        Room.Table.Helmet helmet = table.new Helmet("каска");
+        Room.Shtafirka shtafirka = new Room.Shtafirka("штафирка");//внутренний класс
+        Room.Table.Phone phone = table.new Phone("телефонный аппарат");//вложенный класс
+        Room.Table.Helmet helmet = new Room.Table.Helmet("каска");
         Policeman drigle = new Policeman("Дригль", 42, TypeOfLocation.UNVENTILATEDROOM, Emotion.NORMAL);
         Room.Wardrobe wardrobe = new Room.Wardrobe("высокие шкафы");
         Story story = new Story();
@@ -173,23 +171,48 @@ public class Main {
     }
 }
 
-class Story{
-    public void narrate(){
-        class Beginning{
-            void start(){
+class Story {
+    public void narrate() {
+        class Beginning { //локальный класс без модификаторов
+            void start() {
+
                 System.out.println("Наша история про коротышек началась, приятного чтения!\n");
             }
         }
         Beginning beginning = new Beginning();
         beginning.start();
     }
-    public void complete(){
-        class End{
-            void finish(){
+
+
+
+    interface Finishable {
+        void finish();
+    }
+    class End{ // анонимный c интерфейсом
+        Finishable finishes;
+        End(Finishable finishes){
+            this.finishes = finishes;
+        }
+        public void close(){
+            finishes.finish();
+        }
+    }
+
+
+    public void complete() {
+        End end = new End(new Finishable() {
+            public void finish() {
                 System.out.print("\nЧудесная история подошла к концу! Для того, чтобы узнать о дальнейших приключениях Незнайки, можете прочитать книгу!\n");
             }
-        }
-        End end = new End();
-        end.finish();
+        });
+        end.close();
     }
+//    лямбда(автоматическое изменение джавы)
+//    public void complete() {
+//        End end = new End(() -> System.out.print("\nЧудесная история подошла к концу! Для того, чтобы узнать о дальнейших приключениях Незнайки, можете прочитать книгу!\n"));
+//        end.close();
+//    }
 }
+
+
+

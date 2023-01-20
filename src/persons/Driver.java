@@ -13,11 +13,6 @@ public class Driver extends Person {
     }
 
 
-    public void jump(){
-        System.out.println(this.name + " подпрыгивает в машине ");
-    }
-
-
     @Override
     public void setEmotion(Emotion emotion) {
 

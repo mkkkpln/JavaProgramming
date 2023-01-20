@@ -101,9 +101,7 @@ public class Shorty extends Person implements ForShorty {
     }
 
     @Override
-    public void setEmotion(Emotion emotion) {
-
-    }
+    public void setEmotion(Emotion emotion) {}
 
 
     public void understand() {
