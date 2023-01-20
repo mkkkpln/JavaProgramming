@@ -15,6 +15,4 @@ public enum Emotion {
         return mean;
     }
 
-
-
 }

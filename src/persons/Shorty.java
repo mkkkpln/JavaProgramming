@@ -2,6 +2,8 @@ package persons;
 
 import enums.*;
 import actions.ForShorty;
+import things.PartOfBody;
+import things.Room;
 
 public class Shorty extends Person implements ForShorty {
 
@@ -11,11 +13,12 @@ public class Shorty extends Person implements ForShorty {
 
     }
 
-    String something = "живут " + Adjective.KIND.toString() + " коротышки";
-    @Override
-    public void think() {
 
-        System.out.print("\"Что ж, здесь вполне " + Adverb.GOOD.toString() + "! -- " + Adverb.COMPLACENTLY.toString() + " подумал " + this.getName() + ". -- " + "Видно, и на Луне " + something +  "!\" \n");
+    @Override
+    public void think(Shorty all) {
+
+        System.out.print("\"Что ж, здесь вполне " + Adverb.GOOD.toString() + "! -- " + Adverb.COMPLACENTLY.toString() + " подумал " + this.getName() + ". -- "
+                + "Видно, и на Луне живут " + Adjective.KIND.toString() + all.getName() + "!\" \n");
 
     }
 
@@ -25,9 +28,10 @@ public class Shorty extends Person implements ForShorty {
         System.out.print(Participle.STANDINGUP.toString() + Participle.WAVING.toString() + this.name + " отправился " + Adverb.FAR.toString() + ", но ");
     }
 
+
     @Override
-    public void putHeadBack() {
-        System.out.println(this.name + " " + Adverb.INVOLUNTARILY.toString() + " откинул голову назад. ");
+    public void putHeadBack(Body body) {
+        System.out.println(this.name + " " + Adverb.INVOLUNTARILY.toString() + " откинул " + body + " назад. ");
     }
 
     @Override
@@ -35,12 +39,24 @@ public class Shorty extends Person implements ForShorty {
         System.out.println(this.name + " " + Adverb.CAREFULLY.toString() + " понюхал кончик дубинки.");
     }
 
-
+    public Spark spark;
+    public static class Spark {
+        String SparkName;
+        public Spark() {
+            this.SparkName = "искры";
+        }
+        public void fly(String from) {
+            System.out.print(this.SparkName + " полетели " + from);
+        }
+    }
     @Override
     public void stagger() {
 
-        System.out.println("Незнайку ударило "
-                + Adjective.ELECTRIC.toString() + " током, да так сильно, что искры полетели из глаз, в голове загудело, и он зашатался, не в силах устоять на ногах.");
+        System.out.print("Незнайку ударило " + Adjective.ELECTRIC.toString() + " током, да так сильно, что ");
+        this.spark = new Spark();
+        spark.fly("из глаз! ");
+        System.out.println("В голове загудело, и " + this.name + " зашатался, не в силах устоять на ногах.");
+
     }
 
     @Override
@@ -61,14 +77,14 @@ public class Shorty extends Person implements ForShorty {
     }
 
     @Override
-    public void lie() {
-        System.out.println(Participle.RISINGUP.toString() + this.name + " приналег на дверцу плечом, но она не открывалась.  ");
+    public void lie(Body body) {
+        System.out.println(Participle.RISINGUP.toString() + this.name + " приналег на дверцу " + body + ", но она не открывалась. ");
     }
 
     @Override
-    public void drum() {
+    public void drum(Body body) {
 
-        System.out.print("Тогда он " + Adverb.STRONGLY.toString() + " забарабанил в дверь кулаком ");
+        System.out.print("Тогда он " + Adverb.STRONGLY.toString() + " забарабанил в дверь " + body);
     }
 
     public void loud(String words) {
@@ -77,20 +93,18 @@ public class Shorty extends Person implements ForShorty {
     }
 
     @Override
-    public void waveHands() {
+    public void waveHands(PartOfBody.Hands hands) {
 
-        System.out.println(this.name + Emotion.SHY + " замахал руками. ");
+        System.out.println(this.name + Emotion.SHY + " замахал " + hands.getName().toString() + ".");
     }
 
     @Override
     public void watch() {
-
         System.out.println(this.name + " взглянул на карточку, которая была приклеена к бланку.");
     }
 
     @Override
     public void riseUp() {
-
         System.out.print(this.name + " " + Adverb.MECHANICALLY + " поднял голову и ");
     }
 
@@ -103,8 +117,9 @@ public class Shorty extends Person implements ForShorty {
     @Override
     public void setEmotion(Emotion emotion) {}
 
-
-    public void understand() {
-        System.out.println("Не успел " + this.name + " сообразить, что произошло, как дверца за ним захлопнулась. ");
+    @Override
+    public void understand(Room.Door door) {
+        System.out.print("Не успел " + this.name + " сообразить, что произошло, как ");
+        door.close();
     }
 }

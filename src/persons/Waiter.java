@@ -26,9 +26,9 @@ public class Waiter extends Person implements ForWaiter, Speakable {
     }
 
     @Override
-    public void pull(String name) {
+    public void pull(Shorty Neznaika) {
 
-        System.out.print(Participle.CATCHING + " он оттащил " + name + " в строну и,");
+        System.out.print(Participle.CATCHING + " он оттащил " + Neznaika.getName() + " в строну и,");
     }
 
     @Override

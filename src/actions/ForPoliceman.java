@@ -1,16 +1,20 @@
 package actions;
 
 import locations.TypeOfLocation;
+import persons.Policeman;
+import persons.Shorty;
+import things.PartOfBody;
+import things.Room;
 
 public interface ForPoliceman {
     void comeUp(String location); // появиться
-    void stick(); // ткнуть палкой
-    void stick2();
-    void give(String name);
+    void stick(PartOfBody.Forehead forehead); // ткнуть палкой
+    void stick2(Shorty Neznaika);
+    void give(Shorty Neznaika);
     void be();
-    void exist();
+    void exist(Policeman figle);
     void joke();
-    void search(); // начать шарить в карманах
+    void search(Shorty Neznaika); // начать шарить в карманах
     void pull(); // потащить сквозь толпу
     void comeUp(); // вошёл
     void pull(String location); // протащить по улице
@@ -20,11 +24,11 @@ public interface ForPoliceman {
     void silent(String name); // не удостоить ответом, молчать
     void sit(TypeOfLocation location); // сидеть
     void command(String words); // скомандовать
-    void takeOff(); // снять
+    void takeOff(Policeman figle); // снять
     void put(); // поставить
-    void write(); // записать
+    void write(Shorty Neznaika); // записать
     void press(); // нажать
-    void tell(String words);
+    void tell(Room.Door door, String words);
     void watch(); // смотреть
     void work(TypeOfLocation location);
 }

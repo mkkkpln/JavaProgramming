@@ -23,7 +23,6 @@ public abstract class Person implements Emotionable {
 
 
     public String getName(){
-
         return name;
     }
 

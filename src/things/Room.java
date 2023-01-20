@@ -43,8 +43,8 @@ public class Room {
             }
         }
 
-        public void have() {
-            System.out.println("На столе стояли телефонный аппарат, ящик с чистыми бланками для регистрации арестованных, плоская коробочка с черной типографской краской для изготовления отпечатков пальцев и медная каска Мигля.");
+        public void have(Phone phone, BigBox bigBox, LittleBox littleBox) {
+            System.out.println("На столе стояли " + phone + ", " + bigBox + ", " + littleBox + " и медная каска Мигля.");
         }
 
         public class Phone {
@@ -67,7 +67,7 @@ public class Room {
                     System.out.println("Всего " + cnt + " телефон на столе"); }
             }
         }
-        public static class BigBox {
+        public class BigBox {
             private final String name;
 
             public BigBox (String name) {
@@ -84,7 +84,7 @@ public class Room {
             }
         }
 
-        public static class LittleBox {
+        public class LittleBox {
             private final String name;
 
             public LittleBox (String name) {
@@ -181,6 +181,27 @@ public class Room {
             System.out.print("с другой стороны находился " + getName() + ", с помощью которого просвечивали арестованных насквозь, чтоб узнать, ");
         }
     }
+
+
+    public static class Door {
+        private String name;
+
+        public Door(String name) {
+            this.name = name;
+        }
+        public String getName() {
+            return name;
+        }
+        @Override
+        public String toString() {
+            return "дверца";
+        }
+        public void close() {
+            System.out.println(this.name + " за ним захлопнулась. ");
+        }
+
+    }
+
 
     public static class Shtafirka {
         private String name;
