@@ -8,12 +8,14 @@ import enums.Participle;
 import locations.TypeOfLocation;
 import things.PartOfBody;
 import things.Room;
+import java.util.ArrayList;
 
 public class Policeman extends Person implements ForPoliceman, Speakable {
 
     private boolean isGlamorousButton =false;
     private Boolean isCommand;
     private Boolean isJoking;
+    public ArrayList<Room.Table.Phone> amountOfPhones = new ArrayList<>();
 
     public Policeman(String name, int age, TypeOfLocation location, Emotion emotion) {
         super(name, age, location, emotion);
@@ -195,7 +197,17 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
     @Override
     public void watch() {
         System.out.println(this.name + " " + Adverb.GLOOMILY.toString() + " взглянул на Незнайку...");
+    }
 
+    public void count (Room.Table.Phone phone) {
+        amountOfPhones = Room.Table.Phone.getPhones();
+        System.out.println("На столе в ресторане лежит " + amountOfPhones.size() + " телефонов.");
+        if (amountOfPhones.contains(phone)) {
+            Room.Table.Phone.getPhones().remove(phone);
+            System.out.println(this.name + " убрал один телефон. Осталось всего: " + amountOfPhones.size());
+        } else {
+            System.out.println(this.name + " не может снять со стола этот телефон, потому что их больше нет.");
+        }
     }
 
     @Override

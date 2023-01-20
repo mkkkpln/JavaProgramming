@@ -3,6 +3,8 @@ package things;
 import enums.Adjective;
 import exceptions.NoPhoneOnTable;
 import exceptions.TableBrokenException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Room {
     private static String name;
@@ -47,10 +49,18 @@ public class Room {
             System.out.println("На столе стояли " + phone + ", " + bigBox + ", " + littleBox + " и медная каска Мигля.");
         }
 
+
         public class Phone {
             private String name;
-            public Phone (String name) {
+            protected static ArrayList phones;
+            public Phone (String name, Phone ... phones) {
                  this.name = name;
+                if (phones == null){
+                    this.phones = new ArrayList<>();
+                }
+                else{
+                    this.phones = new ArrayList<>(List.of(phones));
+                }
             }
             public String getName(){
                 return name;
@@ -65,6 +75,9 @@ public class Room {
                 }
                 else {
                     System.out.println("Всего " + cnt + " телефон на столе"); }
+            }
+            public static ArrayList<Phone> getPhones() {
+                return phones;
             }
         }
         public class BigBox {
