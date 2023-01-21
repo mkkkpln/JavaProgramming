@@ -70,13 +70,12 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
 
     @Override
     public void search(Shorty Neznaika) {
-        System.out.print(Participle.POLICECATCHING.toString() + this.name + " принялся шарить у " + Neznaika.getName() + " в карманах и, ");
+        System.out.print(TypeOfAction.POLICECATCHING.toString() + this.name + " принялся шарить у " + Neznaika.getName() + " в карманах и, ");
     }
 
     @Override
     public void pull() {
-        System.out.println(Participle.FINDING.toString() + this.name + " потащил его сквозь толпу, которая начала собираться вокруг. Толпа"
-                + Adverb.FAST.toString() + " рассеялась.");
+        System.out.println(TypeOfAction.FINDING.toString() + this.name + " потащил его сквозь толпу, которая начала собираться вокруг. Толпа рассеялась.");
 
     }
 
@@ -102,12 +101,12 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
     @Override
     public void nod() {
 
-        System.out.print(Participle.OPENING.toString() + " он " + Adverb.IMPERATIVE.toString() + " кивнул Незнайке пальцем и, ");
+        System.out.print(TypeOfAction.OPENING.toString() + " он " + Condition.IMPERATIVE.toString() + " кивнул Незнайке пальцем и, ");
     }
 
     @Override
     public void say(String phrase) {
-        System.out.println(Participle.BROWS.toString() + " сказал: " + "\"" + phrase + "\"");
+        System.out.println(TypeOfAction.BROWS.toString() + " сказал: " + "\"" + phrase + "\"");
     }
 
     @Override
@@ -148,7 +147,7 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
 
     @Override
     public void takeOff(Policeman figle) {
-        System.out.print("Это обстоятельство особенно " + Adverb.GOOD.toString() + " стало заметно, когда вошедший в комнату " + figle.getName() + " снял с головы каску");
+        System.out.print("Это обстоятельство особенно " + Condition.GOOD.toString() + " стало заметно, когда вошедший в комнату " + figle.getName() + " снял с головы каску");
     }
 
     @Override
@@ -158,7 +157,7 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
 
     @Override
     public void write(Shorty Neznaika) {
-        System.out.println(Participle.BOX.toString() + this.name + " записал на нем имя " + Neznaika.getName() + ", проставил рост, размер головы и носа, снял с него фотокарточку, просветил рентгеном, после чего испачкал ему обе руки черной краской и заставил оставить отпечатки пальцев на бланке.");
+        System.out.println(TypeOfAction.BOX.toString() + this.name + " записал на нем имя " + Neznaika.getName() + ", проставил рост, размер головы и носа, снял с него фотокарточку, просветил рентгеном, после чего испачкал ему обе руки черной краской и заставил оставить отпечатки пальцев на бланке.");
 
     }
 
@@ -192,7 +191,7 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
 
     @Override
     public void watch() {
-        System.out.println(this.name + " " + Adverb.GLOOMILY.toString() + " взглянул на Незнайку...");
+        System.out.println(this.name + " " + " взглянул на Незнайку...");
         this.setEmotion(Emotion.NORMAL);
         this.getEmotion();
     }

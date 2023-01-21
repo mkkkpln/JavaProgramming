@@ -24,12 +24,12 @@ public class Main {
         Policeman policeman = new Policeman("Полицейский", 42, TypeOfLocation.UNVENTILATEDROOM, Emotion.NORMAL);
         Policeman tallshorty = new Policeman("рослый коротышка", 42, TypeOfLocation.UNVENTILATEDROOM, Emotion.NORMAL);
         Driver driver = new Driver("Шофер", 75);
-        Motor motor = new Motor("Мотор", 249 );
+        Motor motor = new Motor("Мотор", 249);
         Car car = new Car("Автомобиль", motor);
         Policeman figle = new Policeman("Фигль", 42, TypeOfLocation.UNVENTILATEDROOM, Emotion.NORMAL);
         Policeman migle = new Policeman("Мигль", 42, TypeOfLocation.UNVENTILATEDROOM, Emotion.NORMAL);
         Policeman both = new Policeman("Оба", 42, TypeOfLocation.UNVENTILATEDROOM, Emotion.NORMAL);
-        Arrested arrested = new Arrested("арестованные", 25-30, TypeOfLocation.UNVENTILATEDROOM, Emotion.NORMAL);
+        Arrested arrested = new Arrested("арестованные", 25 - 30, TypeOfLocation.UNVENTILATEDROOM, Emotion.NORMAL);
         PartOfBody.Forehead forehead = new PartOfBody.Forehead("лоб");
         PartOfBody.Hands hands = new PartOfBody.Hands("руками");
         Room.Table table = new Room.Table("стол");
@@ -148,7 +148,7 @@ public class Main {
 
         try {
             phone.lose(21);
-        } catch (NoPhoneOnTable e){
+        } catch (NoPhoneOnTable e) {
             System.out.println(e.getMessage());
             System.out.println("Сколько телефонов? " + 21);
         }
@@ -167,7 +167,7 @@ public class Main {
         migle.joke();
 
         //Как только дверь затворилась за Фиглем, Мигль сказал Незнайке:
-        migle.tell(new Room.Door("дверь"),"Вы будете наказаны!");
+        migle.tell(new Room.Door("дверь"), "Вы будете наказаны!");
         Neznaika.waveHands(hands);
         Neznaika.watch();
 
@@ -179,52 +179,57 @@ public class Main {
 
         story.complete();
     }
+
+    static class Story {
+        public void narrate() {
+            class Beginning { //локальный класс без модификаторов
+                void start() {
+
+                    System.out.println("Наша история про коротышек началась, приятного чтения!\n");
+                }
+            }
+            Beginning beginning = new Beginning();
+            beginning.start();
+        }
+
+
+        interface Finishable {
+            void finish();
+        }
+
+        class End { // анонимный c интерфейсом
+            Finishable finishes;
+
+            End(Finishable finishes) {
+
+                this.finishes = finishes;
+            }
+
+            public void close() {
+
+                finishes.finish();
+            }
+        }
+
+
+        public void complete() {
+            End end = new End(new Finishable() {
+                public void finish() {
+                    System.out.print("\nЧудесная история подошла к концу! Для того, чтобы узнать о дальнейших приключениях Незнайки, можете прочитать книгу!\n");
+                }
+            });
+            end.close();
+        }
+    }
 }
-
-class Story {
-    public void narrate() {
-        class Beginning { //локальный класс без модификаторов
-            void start() {
-
-                System.out.println("Наша история про коротышек началась, приятного чтения!\n");
-            }
-        }
-        Beginning beginning = new Beginning();
-        beginning.start();
-    }
-
-
-
-    interface Finishable {
-        void finish();
-    }
-    class End{ // анонимный c интерфейсом
-        Finishable finishes;
-        End(Finishable finishes){
-
-            this.finishes = finishes;
-        }
-        public void close(){
-
-            finishes.finish();
-        }
-    }
-
-
-    public void complete() {
-        End end = new End(new Finishable() {
-            public void finish() {
-                System.out.print("\nЧудесная история подошла к концу! Для того, чтобы узнать о дальнейших приключениях Незнайки, можете прочитать книгу!\n");
-            }
-        });
-        end.close();
-    }
 //    лямбда(автоматическое изменение джавы)
 //    public void complete() {
 //        End end = new End(() -> System.out.print("\nЧудесная история подошла к концу! Для того, чтобы узнать о дальнейших приключениях Незнайки, можете прочитать книгу!\n"));
 //        end.close();
 //    }
-}
+
+
+
 
 
 

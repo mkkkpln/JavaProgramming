@@ -17,7 +17,7 @@ public class Shorty extends Person implements ForShorty {
     @Override
     public void think(Shorty all) {
 
-        System.out.print("\"Что ж, здесь вполне " + Adverb.GOOD.toString() + "! -- " + Adverb.COMPLACENTLY.toString() + " подумал " + this.getName() + ". -- "
+        System.out.print("\"Что ж, здесь вполне " + Condition.GOOD.toString() + "! -- " + Condition.COMPLACENTLY.toString() + " подумал " + this.getName() + ". -- "
                 + "Видно, и на Луне живут " + Face.KIND.toString() + all.getName() + "!\" \n");
 
     }
@@ -25,18 +25,18 @@ public class Shorty extends Person implements ForShorty {
 
     @Override
     public void transfer(){
-        System.out.print(Participle.STANDINGUP.toString() + Participle.WAVING.toString() + this.name + " отправился " + Adverb.FAR.toString() + ", но ");
+        System.out.print(TypeOfAction.STANDINGUP.toString() + TypeOfAction.WAVING.toString() + this.name + " отправился " + Distance.FAR.toString() + ", но ");
     }
 
 
     @Override
     public void putHeadBack(Body body) {
-        System.out.println(this.name + " " + Adverb.INVOLUNTARILY.toString() + " откинул " + body + " назад. ");
+        System.out.println(this.name + " " + Power.INVOLUNTARILY.toString() + " откинул " + body + " назад. ");
     }
 
     @Override
     public void smell() {
-        System.out.println(this.name + " " + Adverb.CAREFULLY.toString() + " понюхал кончик дубинки.");
+        System.out.println(this.name + " " + " понюхал кончик дубинки.");
     }
 
     public Spark spark;
@@ -62,13 +62,13 @@ public class Shorty extends Person implements ForShorty {
     @Override
     public void slow() {
 
-        System.out.print(Participle.WATCHING + "что " + this.name + " медлит,");
+        System.out.print(TypeOfAction.WATCHING + "что " + this.name + " медлит,");
     }
 
     @Override
     public void fall() {
 
-        System.out.println("что тот " + Adverb.HEADOVERHEELS.toString() + " полетел в кузов. ");
+        System.out.println("что тот " + " полетел в кузов. ");
     }
 
     @Override
@@ -78,13 +78,13 @@ public class Shorty extends Person implements ForShorty {
 
     @Override
     public void lie(Body body) {
-        System.out.println(Participle.RISINGUP.toString() + this.name + " приналег на дверцу " + body + ", но она не открывалась. ");
+        System.out.println(TypeOfAction.RISINGUP.toString() + this.name + " приналег на дверцу " + body + ", но она не открывалась. ");
     }
 
     @Override
     public void drum(Body body) {
 
-        System.out.print("Тогда он " + Adverb.STRONGLY.toString() + " забарабанил в дверь " + body);
+        System.out.print("Тогда он " + Power.STRONGLY.toString() + " забарабанил в дверь " + body);
     }
 
     public void loud(String words) {
@@ -105,13 +105,13 @@ public class Shorty extends Person implements ForShorty {
 
     @Override
     public void riseUp() {
-        System.out.print(this.name + " " + Adverb.MECHANICALLY + " поднял голову и ");
+        System.out.print(this.name + " " + " поднял голову и ");
     }
 
     @Override
     public void stretchArms() {
 
-        System.out.println("вытянул руки " + Adverb.BYSIDES.toString() + ".");
+        System.out.println("вытянул руки " + Power.BYSIDES.toString() + ".");
     }
 
     @Override
