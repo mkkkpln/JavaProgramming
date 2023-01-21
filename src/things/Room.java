@@ -1,10 +1,11 @@
 package things;
 
-import enums.Adjective;
+import enums.Material;
+import enums.SizeAndForm;
 import exceptions.NoPhoneOnTable;
 import exceptions.TableBrokenException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Room {
     private static String name;
@@ -34,10 +35,9 @@ public class Room {
 
         public void stand(int kg) {
             System.out.println("Посреди комнаты стоял 3х метровый "
-                    + Adjective.STRONG.toString()
-                    + " " + Adjective.OAKEN.toString() + " " + this.name
-                    + " с " + Adjective.HEAVY.toString() + " " + Adjective.STRAIGHT.toString()
-                    + " " + Adjective.QUADRANGULAR.toString() + " ножками. Он мог выдержать всего " + kg + " килограмм.");
+                    + " " + Material.OAKEN.toString() + " " + this.name
+                    + " с " + SizeAndForm.HEAVY.toString()
+                    + " ножками. Он мог выдержать всего " + kg + " килограмм.");
             double chanceToBreak = kg * 0.00555555;
             if (Math.random() > 1 - chanceToBreak)
             {
@@ -52,15 +52,12 @@ public class Room {
 
         public class Phone {
             private String name;
-            protected static ArrayList phones;
-            public Phone (String name, Phone ... phones) {
+            protected static ArrayList<Phone> phones=new ArrayList<>();
+            public Phone (String name) {
                  this.name = name;
-                if (phones == null){
-                    this.phones = new ArrayList<>();
-                }
-                else{
-                    this.phones = new ArrayList<>(List.of(phones));
-                }
+                phones.add(this);
+                phones.add(this);
+                phones.add(this);
             }
             public String getName(){
                 return name;
@@ -79,6 +76,8 @@ public class Room {
             public static ArrayList<Phone> getPhones() {
                 return phones;
             }
+
+
         }
         public class BigBox {
             private final String name;

@@ -72,7 +72,7 @@ public class Main {
 
         //Сейчас же откуда-то из темноты вынырнул рослый коротышка в синем мундире с блестящими металлическими пуговицами и в медной каске на голове. В руках у него была увесистая резиновая дубинка, а у пояса пистолет в кобуре.
         tallshorty.comeUp(TypeOfLocation.DARKNESS.toString());
-        figle.count(phone);
+        figle.count(Room.Table.Phone.getPhones());
 
         //Незнайка невольно откинул голову назад. Незнайка осторожно понюхал кончик дубинки.
         Neznaika.putHeadBack(Body.голову);
@@ -118,6 +118,7 @@ public class Main {
         policeman.silent(Neznaika.getName());
         policeman.sit(TypeOfLocation.CAR);
         policeman.command("Вперёд!");
+        policeman.setEmotion(Emotion.SHY);
 
         //Мотор загудел. Автомобиль запрыгал по камням мостовой, и через четверть часа Незнайка уже был в полицейском управлении.
         motor.voice();
@@ -200,9 +201,11 @@ class Story {
     class End{ // анонимный c интерфейсом
         Finishable finishes;
         End(Finishable finishes){
+
             this.finishes = finishes;
         }
         public void close(){
+
             finishes.finish();
         }
     }

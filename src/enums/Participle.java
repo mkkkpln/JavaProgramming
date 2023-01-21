@@ -8,10 +8,10 @@ public enum Participle {
     TAKING (" достав из кармана свисток, "),
     POLICECATCHING ("Схватив Незнайку за шиворот, "),
     FINDING ("ничего в них не обнаружив, "),
-    OPENING ("Открыв " + Adverb.WIDEOPEN.toString() + " дверцу, которая была с " + Adjective.BACK.toString() + " стороны кузова,"),
+    OPENING ("Открыв " + Adverb.WIDEOPEN.toString() + " дверцу, которая была с задней стороны кузова,"),
     BROWS ("нахмурив брови,"),
     WATCHING ("Увидев, "),
-    RISINGUP ("Поднявшись с " + Adjective.DIRTY.toString() + ", заплеванного пола, "),
+    RISINGUP ("Поднявшись с заплеванного пола, "),
     BOX ( "Достав из ящика чистый бланк, ");
 
     private String mean;

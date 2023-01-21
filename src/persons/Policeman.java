@@ -1,10 +1,7 @@
 package persons;
 
 import actions.*;
-import enums.Adjective;
-import enums.Adverb;
-import enums.Emotion;
-import enums.Participle;
+import enums.*;
 import locations.TypeOfLocation;
 import things.PartOfBody;
 import things.Room;
@@ -41,9 +38,9 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
     public void comeUp(String location) {
 
         System.out.println("Сейчас же откуда-то из " + location + " вынырнул "
-                + this.name + " в " + Adjective.BLUE.toString() + " мундире с блестящими металлическими пуговицами и в "
-                + Adjective.COOPER.toString() + " каске на голове. В руках у него была " + Adjective.WEIGHTY.toString()
-                + " " + Adjective.RUBBER.toString() + " дубинка, а у пояса пистолет в кобуре.");
+                + this.name + " в " + Color.BLUE.toString() + " мундире с блестящими металлическими пуговицами и в "
+                + Material.COOPER.toString() + " каске на голове. В руках у него была " + SizeAndForm.WEIGHTY.toString()
+                + " " + Material.RUBBER.toString() + " дубинка, а у пояса пистолет в кобуре.");
 
     }
 
@@ -90,16 +87,15 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
 
     @Override
     public void turn() {
-        System.out.print(" свернул в" + Adjective.NARROW.toString() + " " + TypeOfLocation.AVENUE.toString() + "и ");
+        System.out.print(" свернул в" + SizeAndForm.NARROW.toString() + " " + TypeOfLocation.AVENUE.toString() + "и ");
 
     }
 
     @Override
     public void stop() {
 
-        System.out.println("остановился возле " + Adjective.BLACK.toString() + " полицейской машины, напоминавшей автофургон с "
-                + Adjective.SMALL.toString() + " "
-                + Adjective.BARRED.toString() + " окном в кузове.");
+        System.out.println("остановился возле " + Color.BLACK.toString() + " полицейской машины, напоминавшей автофургон с "
+                + SizeAndForm.SMALL.toString() + " окном в кузове.");
 
     }
 
@@ -181,7 +177,7 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
     public void joke() {
         if (!this.name.equals("Мигль")) {
             isJoking =false;
-            System.out.println("\n\n... Упс! Что-то идет не по плану... Это уже не аша история...\n\n");
+            System.out.println("\n\n... Упс! Что-то идет не по плану... Это уже не наша история...\n\n");
         } else {
             isJoking =true;
             System.out.println(this.name + ", наоборот, был большой любитель поговорить и даже пошутить.");
@@ -197,14 +193,16 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
     @Override
     public void watch() {
         System.out.println(this.name + " " + Adverb.GLOOMILY.toString() + " взглянул на Незнайку...");
+        this.setEmotion(Emotion.NORMAL);
+        this.getEmotion();
     }
 
-    public void count (Room.Table.Phone phone) {
-        amountOfPhones = Room.Table.Phone.getPhones();
-        System.out.println("На столе в ресторане лежит " + amountOfPhones.size() + " телефонов.");
-        if (amountOfPhones.contains(phone)) {
-            Room.Table.Phone.getPhones().remove(phone);
-            System.out.println(this.name + " убрал один телефон. Осталось всего: " + amountOfPhones.size());
+    public void count (ArrayList<Room.Table.Phone> phones) {
+        int amountOfPhones = phones.size();
+        System.out.println("На столе в ресторане лежит " + amountOfPhones + " телефонов.");
+        if (amountOfPhones!=0) {
+            Room.Table.Phone.getPhones().remove(phones);
+            System.out.println(this.name + " убрал один телефон. Осталось всего: " + (amountOfPhones-1));
         } else {
             System.out.println(this.name + " не может снять со стола этот телефон, потому что их больше нет.");
         }
@@ -212,7 +210,6 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
 
     @Override
     public void sit(TypeOfLocation location){
-
         System.out.print(this.name + " сел в " + location + "рядом с шофером и ");
     }
 
@@ -223,11 +220,12 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
 
     @Override
     public void be() {
-        System.out.println("При этом обнаружилось еще и то, что между Миглем и Фиглем было большое сходство: оба были " + Adjective.CHEEKBONES.toString() + ", " + Adjective.BROADFACED.toString() + ", у обоих были низкие лбы и темные, жесткие, подстриженные ежиком волосы, начинавшиеся чуть ли не от самых бровей.");
+        System.out.println("При этом обнаружилось еще и то, что между Миглем и Фиглем было большое сходство: оба были " + Face.CHEEKBONES.toString() + ", " + Face.BROADFACED.toString() + ", у обоих были низкие лбы и темные, жесткие, подстриженные ежиком волосы, начинавшиеся чуть ли не от самых бровей.");
     }
 
     @Override
     public void setEmotion(Emotion emotion) {
-
+        this.emotion = emotion;
+        System.out.printf("у %s настроение сменилось на %s\n", getName(), emotion);
     }
 }

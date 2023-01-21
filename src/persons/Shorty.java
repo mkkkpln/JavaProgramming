@@ -18,7 +18,7 @@ public class Shorty extends Person implements ForShorty {
     public void think(Shorty all) {
 
         System.out.print("\"Что ж, здесь вполне " + Adverb.GOOD.toString() + "! -- " + Adverb.COMPLACENTLY.toString() + " подумал " + this.getName() + ". -- "
-                + "Видно, и на Луне живут " + Adjective.KIND.toString() + all.getName() + "!\" \n");
+                + "Видно, и на Луне живут " + Face.KIND.toString() + all.getName() + "!\" \n");
 
     }
 
@@ -52,7 +52,7 @@ public class Shorty extends Person implements ForShorty {
     @Override
     public void stagger() {
 
-        System.out.print("Незнайку ударило " + Adjective.ELECTRIC.toString() + " током, да так сильно, что ");
+        System.out.print("Незнайку ударило " + Material.ELECTRIC.toString() + " током, да так сильно, что ");
         this.spark = new Spark();
         spark.fly("из глаз! ");
         System.out.println("В голове загудело, и " + this.name + " зашатался, не в силах устоять на ногах.");
