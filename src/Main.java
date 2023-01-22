@@ -8,8 +8,6 @@ import persons.*;
 import things.PartOfBody;
 import things.Room;
 
-import java.util.List;
-
 
 public class Main {
     public static void main(String[] args) {
@@ -77,11 +75,11 @@ public class Main {
 
         //Незнайка невольно откинул голову назад. Незнайка осторожно понюхал кончик дубинки.
         Neznaika.putHeadBack(Body.голову);
-        Neznaika.smell();
+        Neznaika.smell(Neznaika);
 
         //Незнайка машинально поднял голову и вытянул руки по швам.
         Neznaika.riseUp();
-        Neznaika.stretchArms();
+        Neznaika.stretchArms(policeman);
 
         //Полицейский ткнул его кончиком дубинки в лоб. Раздался треск.
         policeman.stick(forehead);
@@ -105,7 +103,7 @@ public class Main {
         //Увидев, что Незнайка медлит, он с такой силой ткнул его в спину дубинкой, что тот кувырком полетел в кузов.
         Neznaika.slow();
         policeman.stick2(Neznaika);
-        Neznaika.fall();
+        Neznaika.fall(Neznaika);
 
 
         //Не успел Незнайка сообразить, что произошло, как дверца за ним захлопнулась. Поднявшись с грязного, заплеванного пола, Незнайка приналег на дверцу плечом, но она не открывалась.
@@ -157,7 +155,7 @@ public class Main {
         //На столе стояли телефонный аппарат, ящик с чистыми бланками для регистрации арестованных, плоская коробочка с черной типографской краской для изготовления отпечатков пальцев и медная каска Мигля. Для точности необходимо сказать, что медная каска Мигля блестела менее ярко, нежели каска Фигля.
         Neznaika.addItem(littleBox);
         Neznaika.addItem(bigBox);
-        policeman.checkitem(Neznaika);
+        policeman.checkItem(Neznaika);
         table.have(phone, bigBox, littleBox);
         helmet.shine();
 
@@ -172,14 +170,14 @@ public class Main {
 
         //Как только дверь затворилась за Фиглем, Мигль сказал Незнайке:
         migle.tell(new Room.Door("дверь"), "Вы будете наказаны!");
-        Neznaika.waveHands(hands);
+        Neznaika.waveHands(hands, Neznaika);
         Neznaika.watch();
 
         // Достав из ящика чистый бланк, Мигль записал на нем Незнайкино имя, проставил рост, размер головы и носа, снял с него фотокарточку, просветил рентгеном, после чего испачкал ему обе руки черной краской и заставил оставить отпечатки пальцев на бланке. Мигль нажал кнопку электрического звонка, и в дверь вошел полицейский Дригль -- такое же широкоскулое, туповатое лицо с низким лбом и подстриженными ежиком волосами. Дригль хмуро взглянул на Незнайку
         migle.write(Neznaika);
         migle.press();
         drigle.comeUp();
-        drigle.watch();
+        drigle.watch(Neznaika);
 
         story.complete();
     }

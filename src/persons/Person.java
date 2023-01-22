@@ -53,7 +53,12 @@ public abstract class Person implements Emotionable {
     }
 
     public void changeMood(int mP){
-        this.moodPoints += mP;
+        if (name == "Дригль") {
+            this.moodPoints -= mP;
+        }
+        else {
+            this.moodPoints += mP;
+        }
     }
 
 

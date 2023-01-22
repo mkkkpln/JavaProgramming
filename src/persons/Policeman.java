@@ -82,25 +82,6 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
     }
 
     @Override
-    public void pull(String location) {
-        System.out.print(this.name + " протащил Незнайку" + TypeOfLocation.STREET.toString() + ",");
-    }
-
-    @Override
-    public void turn() {
-        System.out.print(" свернул в" + SizeAndForm.NARROW.toString() + " " + TypeOfLocation.AVENUE.toString() + "и ");
-
-    }
-
-    @Override
-    public void stop() {
-
-        System.out.println("остановился возле " + Color.BLACK.toString() + " полицейской машины, напоминавшей автофургон с "
-                + SizeAndForm.SMALL.toString() + " окном в кузове.");
-
-    }
-
-    @Override
     public void nod() {
 
         System.out.print(TypeOfAction.OPENING.toString() + " он " + Condition.IMPERATIVE.toString() + " кивнул Незнайке пальцем и, ");
@@ -147,6 +128,83 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
     }
 
     @Override
+    public void exist(Policeman figle) {
+        System.out.print("Если " + this.name + " был коротышка сердитый, не терпевший, как "
+                + figle.getName() + " сам утверждал, никаких разговоров, то ");
+    }
+
+    @Override
+    public void joke() {
+        if (!this.name.equals("Мигль")) {
+            isJoking =false;
+            System.out.println("\n\n... Упс! Что-то идет не по плану... Это уже не наша история...\n\n");
+        } else {
+            isJoking =true;
+            System.out.println(this.name + ", наоборот, был большой любитель поговорить и даже пошутить.");
+
+        }
+    }
+    @Override
+    public void watch(Person person) {
+        System.out.println(this.name + " " + " взглянул на Незнайку...");
+        this.getEmotion();
+        person.changeMood(36);
+    }
+
+    public void count (ArrayList<Room.Table.Phone> phones) {
+        int amountOfPhones = phones.size();
+        System.out.println("На столе в ресторане лежит " + amountOfPhones + " телефонов.");
+        if (amountOfPhones!=0) {
+            Room.Table.Phone.getPhones().remove(phones);
+            System.out.println(this.name + " убрал один телефон. Осталось всего: " + (amountOfPhones-1));
+        } else {
+            System.out.println(this.name + " не может снять со стола этот телефон, потому что их больше нет.");
+        }
+    }
+
+
+    public void checkItem(Person person) {
+        for (Thing t: person.getItem()) {
+            person.delItem(t);
+            this.addItem(t);
+        }
+        person.changeMood(9);
+    }
+
+    @Override
+    public void sit(TypeOfLocation location){
+        System.out.print(this.name + " сел в " + location + "рядом с шофером и ");
+    }
+
+    @Override
+    public void give(Shorty Neznaika) {
+        System.out.println(this.name + ", которого, кстати сказать, звали Фиглем, сдал " + Neznaika.getName() + " с рук на руки другому полицейскому, которого звали Миглем.");
+    }
+
+    @Override
+    public String be() {
+        return "Между Миглем и Фиглем было большое сходство: оба были " + Face.CHEEKBONES.toString() + ", " + Face.BROADFACED.toString() + ", у обоих были низкие лбы и темные, жесткие, подстриженные ежиком волосы, начинавшиеся чуть ли не от самых бровей.";
+    }
+    @Override
+    public void pull(String location) {
+        System.out.print(this.name + " протащил Незнайку" + TypeOfLocation.STREET.toString() + ",");
+    }
+
+    @Override
+    public void turn() {
+        System.out.print(" свернул в" + SizeAndForm.NARROW.toString() + " " + TypeOfLocation.AVENUE.toString() + "и ");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("остановился возле " + Color.BLACK.toString() + " полицейской машины, напоминавшей автофургон с "
+                + SizeAndForm.SMALL.toString() + " окном в кузове.");
+    }
+    @Override
+    public void tell(Room.Door door, String words) {
+        System.out.println("Как только " + door + " затворилась за Фиглем, " + this.name + " сказал Незнайке: \"" + words + "\"");
+    }
+    @Override
     public void takeOff(Policeman figle) {
         System.out.print("Это обстоятельство особенно " + Condition.GOOD.toString() + " стало заметно, когда вошедший в комнату " + figle.getName() + " снял с головы каску");
     }
@@ -165,69 +223,6 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
     @Override
     public void press() {
         System.out.print(this.name + " нажал кнопку электрического звонка,");
-    }
-
-    @Override
-    public void exist(Policeman figle) {
-        System.out.print("Если " + this.name + " был коротышка сердитый, не терпевший, как "
-                + figle.getName() + " сам утверждал, никаких разговоров, то ");
-    }
-
-    @Override
-    public void joke() {
-        if (!this.name.equals("Мигль")) {
-            isJoking =false;
-            System.out.println("\n\n... Упс! Что-то идет не по плану... Это уже не наша история...\n\n");
-        } else {
-            isJoking =true;
-            System.out.println(this.name + ", наоборот, был большой любитель поговорить и даже пошутить.");
-
-        }
-    }
-
-    @Override
-    public void tell(Room.Door door, String words) {
-        System.out.println("Как только " + door + " затворилась за Фиглем, " + this.name + " сказал Незнайке: \"" + words + "\"");
-    }
-
-    @Override
-    public void watch() {
-        System.out.println(this.name + " " + " взглянул на Незнайку...");
-        this.getEmotion();
-    }
-
-    public void count (ArrayList<Room.Table.Phone> phones) {
-        int amountOfPhones = phones.size();
-        System.out.println("На столе в ресторане лежит " + amountOfPhones + " телефонов.");
-        if (amountOfPhones!=0) {
-            Room.Table.Phone.getPhones().remove(phones);
-            System.out.println(this.name + " убрал один телефон. Осталось всего: " + (amountOfPhones-1));
-        } else {
-            System.out.println(this.name + " не может снять со стола этот телефон, потому что их больше нет.");
-        }
-    }
-
-
-    public void checkitem(Person person) {
-        for (Thing t: person.getItem()) {
-            person.delItem(t);
-            this.addItem(t);
-        }
-    }
-
-    @Override
-    public void sit(TypeOfLocation location){
-        System.out.print(this.name + " сел в " + location + "рядом с шофером и ");
-    }
-
-    @Override
-    public void give(Shorty Neznaika) {
-        System.out.println(this.name + ", которого, кстати сказать, звали Фиглем, сдал " + Neznaika.getName() + " с рук на руки другому полицейскому, которого звали Миглем.");
-    }
-
-    @Override
-    public void be() {
-        System.out.println("При этом обнаружилось еще и то, что между Миглем и Фиглем было большое сходство: оба были " + Face.CHEEKBONES.toString() + ", " + Face.BROADFACED.toString() + ", у обоих были низкие лбы и темные, жесткие, подстриженные ежиком волосы, начинавшиеся чуть ли не от самых бровей.");
     }
 
 }

@@ -39,8 +39,10 @@ public class Shorty extends Person implements ForShorty {
     }
 
     @Override
-    public void smell() {
+    public void smell(Person obj) {
+
         System.out.println(this.name + " " + " понюхал кончик дубинки.");
+        obj.changeMood(35);
     }
 
     public Spark spark;
@@ -67,7 +69,8 @@ public class Shorty extends Person implements ForShorty {
     }
 
     @Override
-    public void fall() {
+    public void fall(Person p) {
+        p.changeMood(-12);
         System.out.println("что тот " + " полетел в кузов. ");
     }
 
@@ -99,8 +102,8 @@ public class Shorty extends Person implements ForShorty {
     }
 
     @Override
-    public void waveHands(PartOfBody.Hands hands) {
-
+    public void waveHands(PartOfBody.Hands hands, Person obj) {
+        obj.changeMood(-50);
         System.out.println(this.name + " в смущении замахал " + hands.getName().toString() + ".");
     }
 
@@ -115,8 +118,9 @@ public class Shorty extends Person implements ForShorty {
     }
 
     @Override
-    public void stretchArms() {
+    public void stretchArms(Person obj) {
         System.out.println("вытянул руки " + Power.BYSIDES.toString() + ".");
+        obj.changeMood(-23);
     }
 
 
