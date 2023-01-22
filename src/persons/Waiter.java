@@ -21,7 +21,7 @@ public class Waiter extends Person implements ForWaiter, Speakable {
 
     @Override
     public void pale() {
-        System.out.print("Улыбка моментально соскочила у официанта с лица. Он даже как-то" + " побледнел " + Emotion.ANGRY.toString() + ".\n");
+        System.out.print("Улыбка моментально соскочила у официанта с лица. Он даже как-то" + " побледнел от злости.\n");
     }
 
     @Override
@@ -29,6 +29,7 @@ public class Waiter extends Person implements ForWaiter, Speakable {
 
         System.out.print(TypeOfAction.CATCHING + " он оттащил " + Neznaika.getName() + " в строну и,");
     }
+
 
     @Override
     public void whistle() {
@@ -42,6 +43,4 @@ public class Waiter extends Person implements ForWaiter, Speakable {
         System.out.println(" сказал: \"" + phrase + "\"");
     }
 
-    @Override
-    public void setEmotion(Emotion emotion) {}
 }

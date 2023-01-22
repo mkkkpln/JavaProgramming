@@ -13,8 +13,4 @@ public class Driver extends Person {
     }
 
 
-    @Override
-    public void setEmotion(Emotion emotion) {
-
-    }
 }

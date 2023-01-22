@@ -20,10 +20,9 @@ public class Room {
         return "комната";
     }
 
-    public static class Table {
-        private String name;
+    public static class Table extends Thing{
         public Table (String name) {
-            this.name = name;
+            super(name);
         }
         public String getName() {
             return name;
@@ -50,11 +49,10 @@ public class Room {
         }
 
 
-        public class Phone {
-            private String name;
+        public class Phone extends Thing{
             protected static ArrayList<Phone> phones=new ArrayList<>();
             public Phone (String name) {
-                 this.name = name;
+                 super(name);
                 phones.add(this);
                 phones.add(this);
                 phones.add(this);
@@ -79,11 +77,10 @@ public class Room {
 
 
         }
-        public class BigBox {
-            private final String name;
+        public class BigBox extends Thing{
 
             public BigBox (String name) {
-                this.name = name;
+                super(name);
             }
 
             public String getName() {
@@ -96,11 +93,9 @@ public class Room {
             }
         }
 
-        public class LittleBox {
-            private final String name;
-
+        public class LittleBox extends Thing{
             public LittleBox (String name) {
-                this.name = name;
+                super(name);
             }
 
             public String getName() {
@@ -113,11 +108,10 @@ public class Room {
             }
         }
 
-        public static class Helmet {
-            private String name;
+        public static class Helmet extends Thing{
 
             public Helmet (String name) {
-                this.name = name;
+                super(name);
             }
 
             public String getName() {
@@ -133,11 +127,9 @@ public class Room {
             }
         }
     }
-    public static class PhotoMachine {
-        private String name;
-
+    public static class PhotoMachine extends Thing{
         public PhotoMachine(String name) {
-            this.name = name;
+            super(name);
         }
 
         public String getName() {
@@ -153,12 +145,10 @@ public class Room {
         }
     }
 
-    public static class Wardrobe {
-        private String name;
-
+    public static class Wardrobe extends Thing{
         public Wardrobe(String name) {
 
-            this.name = name;
+            super(name);
         }
 
         public String getName() {
@@ -174,11 +164,9 @@ public class Room {
         }
     }
 
-    public static class XRAY {
-        private String name;
-
+    public static class XRAY extends Thing{
         public XRAY(String name) {
-            this.name = name;
+            super(name);
         }
 
         public String getName() {
@@ -215,11 +203,9 @@ public class Room {
     }
 
 
-    public static class Shtafirka {
-        private String name;
-
+    public static class Shtafirka extends Thing{
         public Shtafirka(String name) {
-            this.name = name;
+            super(name);
         }
 
         public String getName() {

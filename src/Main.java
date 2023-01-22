@@ -8,6 +8,8 @@ import persons.*;
 import things.PartOfBody;
 import things.Room;
 
+import java.util.List;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -19,8 +21,7 @@ public class Main {
 
 
         Waiter waiter = new Waiter("официант", 36);
-        Shorty Neznaika = new Shorty("Незнайка", 12);
-        Shorty all = new Shorty(" коротышки", 12);
+        Shorty Neznaika = new Shorty("Незнайка", 12, TypeOfLocation.AVENUE, Emotion.NORMAL, 75);
         Policeman policeman = new Policeman("Полицейский", 42, TypeOfLocation.UNVENTILATEDROOM, Emotion.NORMAL);
         Policeman tallshorty = new Policeman("рослый коротышка", 42, TypeOfLocation.UNVENTILATEDROOM, Emotion.NORMAL);
         Driver driver = new Driver("Шофер", 75);
@@ -52,13 +53,13 @@ public class Main {
 
 
         //"Что ж, здесь вполне хорошо! -- благодушно подумал Незнайка. -- Видно, и на Луне живут добрые коротышки!"
-        Neznaika.think(all);
+        System.out.println(Neznaika.think());
 
         //Все, что произошло с ним до этого, стало казаться ему каким-то недоразумением или нелепым сном, о котором не стоит и вспоминать.
-        Neznaika.happened();
+        Neznaika.happened(new String[]{"Упал", "Нагрубили", "Помог бабушке", "Все, что произошло с ним до этого, стало казаться ему каким-то недоразумением или нелепым сном, о котором не стоит и вспоминать."});
 
         //Поднявшись из-за стола и помахав официанту издали на прощание ручкой. Незнайка отправился дальше, но официант быстро догнал его и, вежливо улыбнувшись, сказал:
-        Neznaika.transfer();
+        Neznaika.transfer(waiter);
         waiter.catchUp();
         waiter.say("А как же счёт?");
 
@@ -106,6 +107,7 @@ public class Main {
         policeman.stick2(Neznaika);
         Neznaika.fall();
 
+
         //Не успел Незнайка сообразить, что произошло, как дверца за ним захлопнулась. Поднявшись с грязного, заплеванного пола, Незнайка приналег на дверцу плечом, но она не открывалась.
         Neznaika.understand(new Room.Door("дверца"));
         Neznaika.lie(Body.плечом);
@@ -118,7 +120,6 @@ public class Main {
         policeman.silent(Neznaika.getName());
         policeman.sit(TypeOfLocation.CAR);
         policeman.command("Вперёд!");
-        policeman.setEmotion(Emotion.SHY);
 
         //Мотор загудел. Автомобиль запрыгал по камням мостовой, и через четверть часа Незнайка уже был в полицейском управлении.
         motor.voice();
@@ -154,6 +155,9 @@ public class Main {
         }
 
         //На столе стояли телефонный аппарат, ящик с чистыми бланками для регистрации арестованных, плоская коробочка с черной типографской краской для изготовления отпечатков пальцев и медная каска Мигля. Для точности необходимо сказать, что медная каска Мигля блестела менее ярко, нежели каска Фигля.
+        Neznaika.addItem(littleBox);
+        Neznaika.addItem(bigBox);
+        policeman.checkitem(Neznaika);
         table.have(phone, bigBox, littleBox);
         helmet.shine();
 

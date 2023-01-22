@@ -1,9 +1,12 @@
 package enums;
 
 public enum Emotion {
-    NORMAL ("нейтральное настроение"),
-    ANGRY ("от злости"),
-    SHY (" в смущении");
+    ANGRY ("злое настроение"),
+    BAD ("плохое настроение"),
+    NORMAL ("хорошее настроение"),
+    PEACEFUL ("счастливое настроение"),
+    AWFUL ("беда");
+
 
     private String mean;
     Emotion(String name) {

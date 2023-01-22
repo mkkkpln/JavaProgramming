@@ -2,29 +2,33 @@ package persons;
 
 import enums.*;
 import actions.ForShorty;
+import locations.TypeOfLocation;
 import things.PartOfBody;
 import things.Room;
+import java.util.LinkedList;
 
 public class Shorty extends Person implements ForShorty {
 
-    public Shorty(String name, int age) {
-
-        super(name, age);
-
+    private final LinkedList<String> events = new LinkedList<>();
+    public Shorty(String name, int age, TypeOfLocation location, Emotion emotion, int moodPoints) {
+        super(name, age, location, emotion, moodPoints);
     }
 
-
     @Override
-    public void think(Shorty all) {
-
-        System.out.print("\"Что ж, здесь вполне " + Condition.GOOD.toString() + "! -- " + Condition.COMPLACENTLY.toString() + " подумал " + this.getName() + ". -- "
-                + "Видно, и на Луне живут " + Face.KIND.toString() + all.getName() + "!\" \n");
-
+    public String think() {
+        Emotion nowEmotion = this.getEmotion();
+        return switch (nowEmotion){
+            case AWFUL -> "\"Что ж, какая-то беда!\" - сказал Незнайка.";
+            case ANGRY -> "\"Что ж, здесь плоховато!\" - сказал Незнайка.";
+            case BAD -> "\"Что ж, здесь не так хорошо!\" - сказал Незнайка.";
+            case NORMAL -> "\"Что ж, здесь вполне хорошо!\" - сказал Незнайка.";
+            case PEACEFUL -> "\"Что ж, здесь вполне прекрасно!\" - сказал Незнайка.";
+        };
     }
 
-
     @Override
-    public void transfer(){
+    public void transfer(Person person){
+        person.changeMood(7);
         System.out.print(TypeOfAction.STANDINGUP.toString() + TypeOfAction.WAVING.toString() + this.name + " отправился " + Distance.FAR.toString() + ", но ");
     }
 
@@ -51,29 +55,31 @@ public class Shorty extends Person implements ForShorty {
     }
     @Override
     public void stagger() {
-
         System.out.print("Незнайку ударило " + Material.ELECTRIC.toString() + " током, да так сильно, что ");
         this.spark = new Spark();
         spark.fly("из глаз! ");
         System.out.println("В голове загудело, и " + this.name + " зашатался, не в силах устоять на ногах.");
-
     }
 
     @Override
     public void slow() {
-
         System.out.print(TypeOfAction.WATCHING + "что " + this.name + " медлит,");
     }
 
     @Override
     public void fall() {
-
         System.out.println("что тот " + " полетел в кузов. ");
     }
 
+
     @Override
-    public void happened() {
-        System.out.println("Все, что произошло с ним до этого, стало казаться ему каким-то недоразумением или нелепым сном, о котором не стоит и вспоминать.");
+    public void happened(String[] events) {
+        int sum = 0;
+        for (String i: events){
+            this.changeMood(i.length() % 2);
+            sum += i.length() % 2;
+        }
+        System.out.println("После воспоминаний настроение изменилось на " + events[sum].toString());
     }
 
     @Override
@@ -95,7 +101,7 @@ public class Shorty extends Person implements ForShorty {
     @Override
     public void waveHands(PartOfBody.Hands hands) {
 
-        System.out.println(this.name + Emotion.SHY + " замахал " + hands.getName().toString() + ".");
+        System.out.println(this.name + " в смущении замахал " + hands.getName().toString() + ".");
     }
 
     @Override
@@ -110,12 +116,9 @@ public class Shorty extends Person implements ForShorty {
 
     @Override
     public void stretchArms() {
-
         System.out.println("вытянул руки " + Power.BYSIDES.toString() + ".");
     }
 
-    @Override
-    public void setEmotion(Emotion emotion) {}
 
     @Override
     public void understand(Room.Door door) {

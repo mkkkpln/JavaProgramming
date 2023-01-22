@@ -2,20 +2,23 @@ package actions;
 
 import enums.Body;
 import enums.Emotion;
+import persons.Person;
 import persons.Shorty;
 import things.PartOfBody;
 import things.Room;
 
+import java.util.LinkedList;
+
 public interface ForShorty {
-    void think(Shorty all); // думать
-    void transfer(); // отправиться в другое место
+    String think(); // думать
+    void transfer(Person person); // отправиться в другое место
     void putHeadBack(Body body); // откинуть голову назад
     void smell(); // понюхать
     void stretchArms(); // вытянуть руки по швам
     void stagger(); // зашататься
     void slow(); // медлить
     void fall(); // полететь вниз
-    void happened(); // случилось
+    void happened(String[] events); // случилось
     void lie(Body body);// лечь на дверь
     void drum(Body body); // забарабанить
     void waveHands(PartOfBody.Hands hands);// махать руками

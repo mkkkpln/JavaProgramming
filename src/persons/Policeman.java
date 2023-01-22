@@ -5,6 +5,8 @@ import enums.*;
 import locations.TypeOfLocation;
 import things.PartOfBody;
 import things.Room;
+import things.Thing;
+
 import java.util.ArrayList;
 
 public class Policeman extends Person implements ForPoliceman, Speakable {
@@ -140,7 +142,6 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
 
     @Override
     public void command(String words){
-
         System.out.println("cкомандовал: " + "\"" + words + "\"");
         isCommand = true;
     }
@@ -192,7 +193,6 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
     @Override
     public void watch() {
         System.out.println(this.name + " " + " взглянул на Незнайку...");
-        this.setEmotion(Emotion.NORMAL);
         this.getEmotion();
     }
 
@@ -204,6 +204,14 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
             System.out.println(this.name + " убрал один телефон. Осталось всего: " + (amountOfPhones-1));
         } else {
             System.out.println(this.name + " не может снять со стола этот телефон, потому что их больше нет.");
+        }
+    }
+
+
+    public void checkitem(Person person) {
+        for (Thing t: person.getItem()) {
+            person.delItem(t);
+            this.addItem(t);
         }
     }
 
@@ -222,9 +230,4 @@ public class Policeman extends Person implements ForPoliceman, Speakable {
         System.out.println("При этом обнаружилось еще и то, что между Миглем и Фиглем было большое сходство: оба были " + Face.CHEEKBONES.toString() + ", " + Face.BROADFACED.toString() + ", у обоих были низкие лбы и темные, жесткие, подстриженные ежиком волосы, начинавшиеся чуть ли не от самых бровей.");
     }
 
-    @Override
-    public void setEmotion(Emotion emotion) {
-        this.emotion = emotion;
-        System.out.printf("у %s настроение сменилось на %s\n", getName(), emotion);
-    }
 }

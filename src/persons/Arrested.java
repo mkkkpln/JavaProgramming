@@ -1,8 +1,6 @@
 package persons;
 
 import actions.ForArrested;
-import enums.Adverb;
-import enums.Distance;
 import enums.Emotion;
 import locations.TypeOfLocation;
 
@@ -16,4 +14,5 @@ public class Arrested extends Person implements ForArrested {
     public void conceal() {
         System.out.println("не утаили ли они похищенных ценностей у себя в желудке, проглотив их. ");
     }
+
 }
