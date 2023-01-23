@@ -1,15 +1,11 @@
 import enums.Body;
 import exceptions.NoPhoneOnTable;
-import things.Car;
-import things.Motor;
+import things.*;
 import enums.Emotion;
 import locations.TypeOfLocation;
 import persons.*;
-import things.PartOfBody;
-import things.Room;
 
-
-public class Main {
+public class Main extends Time {
     public static void main(String[] args) {
 
         System.out.println("Запуск моей программы\n");
@@ -42,6 +38,7 @@ public class Main {
         Policeman drigle = new Policeman("Дригль", 42, TypeOfLocation.UNVENTILATEDROOM, Emotion.NORMAL);
         Room.Wardrobe wardrobe = new Room.Wardrobe("высокие шкафы");
         Story story = new Story();
+        Time time = new Time();
 
         System.out.println("Объекты успешно созданы.\n");
 
@@ -133,6 +130,8 @@ public class Main {
 
 
         System.out.println("\n\n ... начинается длинный рассказ про комнату... \n\n");
+        timeGone(25);
+        System.out.println("\n\n");
 
         // Все стены этого помещения были заставлены высокими шкафами, в которых хранились сведения о различных преступниках. Посреди комнаты стоял крепкий дубовый стол с тяжелыми прямыми четырехугольными ножками.
         wardrobe.keep();

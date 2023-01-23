@@ -5,7 +5,9 @@ import actions.ForShorty;
 import locations.TypeOfLocation;
 import things.PartOfBody;
 import things.Room;
+
 import java.util.LinkedList;
+
 
 public class Shorty extends Person implements ForShorty {
 
@@ -13,6 +15,8 @@ public class Shorty extends Person implements ForShorty {
     public Shorty(String name, int age, TypeOfLocation location, Emotion emotion, int moodPoints) {
         super(name, age, location, emotion, moodPoints);
     }
+
+
 
     @Override
     public String think() {

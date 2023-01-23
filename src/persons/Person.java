@@ -12,7 +12,6 @@ public abstract class Person implements Emotionable {
     protected int age;
     private int moodPoints;
     protected TypeOfLocation location;
-//    protected Emotion emotion = Emotion.NORMAL;
 
     public Person(String name, int age, TypeOfLocation location, Emotion emotion, int moodPoints) {
         this.name = name;
